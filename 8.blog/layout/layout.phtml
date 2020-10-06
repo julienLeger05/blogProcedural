@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/picto.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <title>Document</title>
+    <style>
+        .big {
+            font-size: 1.6rem;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-primary  ">
+        <a class="navbar-brand" href="#">Admin blog</a>
+        <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav text-white">
+                <li class="nav-item active ">
+                    <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Articles
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="addArticle.php">ajouter un article</a>
+                        <a class="dropdown-item" href="readArticle.php">tout les articles</a>
+
+                    </div>
+                </li>
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                        <a class="dropdown-item" href="addCat.php">ajouter une categorie </a>
+                        <a class="dropdown-item" href="Readcategorie.php">toutes les categories</a>
+
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Commentaires</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        utilisateurs
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                        <a class="dropdown-item" href="addUser.php">ajouter utilisateurs </a>
+                        <a class="dropdown-item" href="readUser.php">tout les utilisateurs</a>
+
+                    </div>
+                </li>
+            </ul>
+
+
+
+        </div>
+
+        <h6 class="font-italic align-items-center text-white">Bienvenue <?= $_SESSION['user']['aut_name'] ?> &nbsp;</h6>
+        <form class="form-inline bg-light rounded ">
+
+            <a href="../admin/logout.php" class="btn  my-2 my-sm-0" type="submit">Logout</a>
+        </form>
+    </nav>
+    <main>
+
+        <section class="container-fluid">
+            <!-- ci-gît la vue-->
+            <?php
+            require('tpl/' . $view . '.phtml');
+            ?>
+        </section>
+
+    </main>
+</body>
+
+</html>

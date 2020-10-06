@@ -1,0 +1,118 @@
+<main class="container ">
+    <h1 class=" text-primary">Tous les articles</h1>
+
+
+    <div class=" d-flex p-2 justify-content-end">
+        <a href="addArticle.php" class="btn btn-primary "> <i class="icon-file-plus text-white "></i> Ajouter un article</a>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="btn-group p">
+
+            <div class="nav-item dropdown text-decoration-none">
+                <button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Show 10 rows
+                </button>
+                <div class="dropdown-menu bg-primary " aria-labelledby="dropdownMenu3">
+                    <button class="dropdown-item text-white " type="button">row1 </button>
+                    <button class="dropdown-item text-white" type="button">row2</button>
+                    <button class="dropdown-item text-white" type="button">row3</button>
+                    <button class="dropdown-item text-white" type="button">row4</button>
+                    <button class="dropdown-item text-white" type="button">row5</button>
+                    <button class="dropdown-item text-white" type="button">row6</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-light">print</button>
+            <button type="button" class="btn btn-light">copy</button>
+            <button type="button" class="btn btn-light">CSV</button>
+            <button type="button" class="btn btn-light">PDF</button>
+            <div class="nav-item dropdown text-decoration-none">
+                <button type="button" class="btn btn-light dropdown-toggle" id="dropdownMenu5" data-toggle="dropdown" aria-haspopup=" true " aria-expanded="false ">
+                    Column visibility
+                </button>
+                <div class="dropdown-menu bg-primary " aria-labelledby="dropdownMenu5">
+                    <button class="dropdown-item text-white " type="button ">image</button>
+                    <button class="dropdown-item text-white " type="button ">titre</button>
+                    <button class="dropdown-item text-white " type="button ">date de publication</button>
+                    <button class="dropdown-item text-white " type="button ">categorie</button>
+                    <button class="dropdown-item text-white " type="button ">publié</button>
+                    <button class="dropdown-item text-white " type="button ">auteur</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <form class="form-inline justify-content-end mb-3 x ">
+        <input class="form-control mr-sm-2 " type="search " placeholder="Search " aria-label="Search ">
+        <button class="btn btn-outline-success my-2 my-sm-0 " type="submit ">Search</button>
+    </form>
+    <table class="table ">
+        <caption>showing 1 to 3 </caption>
+        <thead>
+            <tr>
+                <th scope="col ">image</th>
+                <th scope="col ">titre</th>
+                <th scope="col ">categories</th>
+                <th scope="col ">auteur </th>
+                <th scope="col ">contenu</th>
+                <th scope="col ">date de creation</th>
+                <th scope="col ">date de publication</th>
+                <th scope="col ">validité</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($donnees as $donnee) : ?>
+                <tr>
+                    <!--   <th scope="row ">
+                        <div class="card " style=" height: 200px;width: 200px; ">
+                            <img src="# " alt=" " srcset=" " class="img-thumbnail ">
+
+                        </div>
+                    </th> -->
+                    <td><img src="../uploads/articles/<?= $donnee['art_picture'] ?>" alt="" srcset="" style="width: 100px;height:100px;"> </td>
+                    <td><?= $donnee['art_title']; ?></td>
+                    <td> <?php
+                            foreach ($donnee['categories'] as $cat) : ?>
+                            <span class="badge badge-success "><?= $cat['cat_title']; ?></span>
+                        <?php
+                            endforeach;
+                        ?></td>
+                    <td><?= $donnee['aut_name']; ?></td>
+                    <td> <?= $donnee['art_content']; ?> </td>
+
+
+                    <td> <?= $donnee['art_created_date']; ?> </td>
+
+
+
+                    <td> <?= $donnee['art_published_date']; ?> </td>
+
+                    <td> <a href="# "><i class=" icon-edit "></i></a><a href="delArticle.php?id=<?= $donnee['art_id']; ?>"><i class=" icon-trash "></i></a></td>
+
+                </tr>
+            <?php
+            endforeach;
+            ?>
+
+        </tbody>
+    </table>
+    <nav aria-label="... " class="justify-content-end d-flex p-2 ">
+        <ul class="pagination ">
+            <li class="page-item disabled ">
+                <span class="page-link ">Precedant</span>
+            </li>
+            <li class="page-item active " aria-current="page ">
+                <span class="page-link ">
+                    1
+                    <span class="sr-only ">(current)</span>
+                </span>
+            </li>
+            <li class="page-item ">
+                <a class="page-link " href="# ">suivant</a>
+            </li>
+        </ul>
+    </nav>
+
+</main>

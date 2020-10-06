@@ -1,0 +1,57 @@
+<?php if (count($errors) > 0) :
+    foreach ($errors as $error) : ?>
+
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong><?= $error ?></strong>
+        </div>
+
+<?php
+    endforeach;
+endif ?>
+
+
+<div class="container">
+    <h1 class="text-primary">Ajouter un Utilisateur</h1>
+    <form action="addUser.php" method="POST" name="formfocus" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="aut_picture">image</label>
+            <input type="file" name="aut_picture" id="aut_picture" class="form-control" value="<?= $pictureName ?>">
+
+        </div>
+        <div class="form-group">
+            <label for="aut_name">Nom prenom</label>
+            <input type="text" name="aut_name" id="aut_name" class="form-control" value="<?= $firstname ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="aut_name">bio</label>
+            <textarea name="aut_bio" id="aut_bio" required class="form-control"><?= $bio ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="aut_name">age</label>
+            <input type="text" name="aut_age" id="aut_age" class="form-control" value="<?= $age ?>">
+        </div>
+        <div class="form-group">
+            <label for="aut_name">email</label>
+            <input type="text" name="aut_email" id="aut_email" class="form-control" value="<?= $email ?>">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="aut_name">mot de passe</label>
+            <input type="password" name="aut_password" id="aut_password" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="aut_name"> confirmer mot de passe</label>
+            <input type="password" name="aut_password2" id="aut_password2" required class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="aut_role">role</label>
+            <select name="aut_role" id="aut_role">
+                <option value="role_admin">admin </option>
+                <option value="role_author">auteur</option>
+            </select>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>

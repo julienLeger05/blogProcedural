@@ -1,0 +1,83 @@
+<?php if (count($errors) > 0) :
+    foreach ($errors as $error) : ?>
+
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong><?= $error ?></strong>
+        </div>
+
+<?php
+    endforeach;
+endif ?>
+
+<main class="container">
+    <h1 class="text-primary">Ajouter un article</h1>
+    <div class="form-group">
+        <form action="addArticle.php" method="POST" enctype="multipart/form-data">
+            <label for="">Titre </label>
+            <input type="text" class="form-control" id="art_title" name="art_title" aria-describedby="emailHelp" value="<?= $title ?>">
+            <small id="emailHelp" class="form-text text-muted">saisissez un titre pour votre article</small>
+
+    </div>
+    <div class="form-group">
+        <label for="art_picture" class="form-label">Image</label>
+        <input type="file" name="art_picture" id="art_picture" class="form-control" value="<?= $pictureName ?>">
+    </div>
+    <div class="form-group">
+        <label for="art_content">contenu</label>
+        <textarea class="form-control" id="art_content" rows="3" name="art_content"><?= $contenu ?></textarea>
+        <small id="emailHel" class="form-text text-muted">contenue de l'article</small>
+    </div>
+
+
+    <div class="form-group row">
+        <label for="example-date-input" class="col-lg-2 col-form-label">Date De publication</label>
+        <div class="col-lg-5">
+            <input class="form-control" type="date" value="<?= $time ?>" name="art_published_date" id="art_published_date">
+            <input type="hidden" name="art_created_date" value="<?= date("Y-m-d H:i:s"); ?>">
+        </div>
+    </div>
+
+
+
+
+    <label for="categories[]">categorie(s) de l'article</label>
+    <select class=" form-control" name="categories[]" id="categories[]" multiple>
+
+
+        <?php
+        foreach ($categories as $categorie) : ?>
+
+            <option value="<?= $categorie['cat_id'] ?>"><?= $categorie['cat_title'] ?></option>
+
+
+        <?php
+        endforeach;
+        ?>
+
+    </select>
+    <small id="emailHep" class="form-text text-muted">selectionnez une categorie pour l'article</small>
+    <label for="art_picture"></label>
+
+
+    <div class="custom-control custom-switch">
+
+        <input type="checkbox" class="custom-control-input" id="art_valid" name="art_valid" value="1">
+        <label class="custom-control-label" for="art_valid">Publier l'article</label>
+        <small id="emailHezlp" class="form-text text-muted">L'article sera mis en brouillon si vous decochez cette case !</small>
+
+
+        <input type="hidden" name="art_aut_id1" value="<?= $_SESSION['user']['aut_id']; ?>">
+
+    </div>
+    <div class=" col-lg-12">
+
+        <button type="button" class="btn btn-outline-primary">Annuler</button>
+        <input type="submit" value="creer" class="btn btn-primary">
+    </div>
+    </form>
+    </div>
+</main>
+</body>
+
+</html>
